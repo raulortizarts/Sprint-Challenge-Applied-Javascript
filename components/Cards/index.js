@@ -77,6 +77,13 @@ function cardComp () {
 }
 //define the html containet to append it all to
 
+const cardsContainer = document.querySelector('.cards-container')
 
+//pull data from the link using axios and feed to comps as args
 
-//pull data from the link using axios
+axios.get ( 'https://lambda-times-backend.herokuapp.com/articles')
+
+.then ((response) => {
+
+    console.log(response.data.articles.javascript)
+})

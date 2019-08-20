@@ -17,3 +17,30 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+//headline div needs class and text
+function headlineComp (headline) {
+    const headlineDiv = document.createElement('div')
+    headlineDiv.textContent = headline
+
+    return headlineDiv
+}
+
+//img needs to pull source
+
+//img container, needs class, append img
+
+//author span, pulls author name
+
+//author div, needs class, append img container and author span
+
+
+
+//main comp, card div, needs class, append headline and author div
+
+
+//define the html containet to append it all to
+
+
+
+//pull data from the link using axios

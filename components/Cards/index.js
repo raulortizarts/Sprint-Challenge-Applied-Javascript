@@ -28,9 +28,32 @@ function headlineComp (headline) {
 
 //img needs to pull source
 
+function imgComp (authorImg) {
+    const cardImg = document.createElement('img')
+    cardImg.src = authorImg
+
+    return cardImg
+}
+
 //img container, needs class, append img
 
+function imgCont (authorImg) {
+    const imgDiv = document.createElement('div')
+    imgDiv.classList.add('img-container')
+
+    imgDiv.appendChild(imgComp(authorImg))
+
+    return imgDiv
+}
+
 //author span, pulls author name
+
+function authorNameComp (author) {
+    const authorName = document.createElement('span')
+    authorName.textContent =author
+
+    return authorName
+}
 
 //author div, needs class, append img container and author span
 

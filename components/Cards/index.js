@@ -63,6 +63,8 @@ function AuthorComp (authorImg, author) {
 
     authorDiv.appendChild(imgCont(authorImg))
     authorDiv.appendChild(authorComp(author))
+
+    return authorDiv
 }
 
 //main comp, card div, needs class, append headline and author div
@@ -74,6 +76,7 @@ function cardComp () {
     card.appendChild(headlineComp(headline))
     card.appendChild(authorComp(authorPhoto, authorName))
     
+    return card
 }
 //define the html containet to append it all to
 
@@ -85,5 +88,11 @@ axios.get ( 'https://lambda-times-backend.herokuapp.com/articles')
 
 .then ((response) => {
 
-    console.log(response.data.articles.javascript)
+    //console.log(response.data.articles.javascript)
+    response.data.articles.javascript.foreach((card) => {
+
+        const cardComponent = cardComp(card.headline, card.authorPhoto, card.authorName)
+
+        cardsContainer.appendChild(cardComponent)
+    })
 })

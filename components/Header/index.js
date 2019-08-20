@@ -11,6 +11,8 @@
 
 //data?
 date = 'March 28, 2019';
+h1 = 'Lambda Times';
+temp = '98°'
 
 // date span, class
 
@@ -30,8 +32,29 @@ function h1er(h1) {
     return titleH1
 }
 
-// temp span
+// temp span, class
 
+function temperature (temp) {
+    const tempSpan = document.createElement('span')
+    tempSpan.classList.add('temp')
+    tempSpan.textContent = temp
 
-//main comp, everything appended to it
-function Header() {}
+    return tempSpan
+}
+
+//main comp, everything appended to it, div, class
+function Header(date, h1, temp) {
+
+    const header = document.createElement('div')
+    header.classList.add('header')
+
+    header.appendChild(dateSpanner(date))
+    header.appendChild(h1er(h1))
+    header.appendChild(temperature(temp))
+
+    return header
+}
+
+const headerContainer = document.querySelector('.header-container')
+
+headerContainer.appendChild(Header(date, h1, temp))

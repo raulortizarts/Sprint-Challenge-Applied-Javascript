@@ -19,7 +19,7 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 //headline div needs class and text
-function headlineComp (headline) {
+function headlineComp(headline) {
     const headlineDiv = document.createElement('div')
     headlineDiv.textContent = headline
 
@@ -57,19 +57,19 @@ function authorNameComp (author) {
 
 //author div, needs class, append img container and author span
 
-function AuthorComp (authorImg, author) {
+function authorComp (authorImg, author) {
     const authorDiv = document.createElement('div')
     authorDiv.classList.add('author')
 
     authorDiv.appendChild(imgCont(authorImg))
-    authorDiv.appendChild(authorComp(author))
+    authorDiv.appendChild(authorNameComp(author))
 
     return authorDiv
 }
 
 //main comp, card div, needs class, append headline and author div
 
-function cardComp () {
+function cardComp (headline, authorPhoto, authorName) {
     const card= document.createElement('div')
     card.classList.add('card')
 
@@ -89,7 +89,7 @@ axios.get ( 'https://lambda-times-backend.herokuapp.com/articles')
 .then ((response) => {
 
     //console.log(response.data.articles.javascript)
-    response.data.articles.javascript.foreach((card) => {
+    response.data.articles.javascript.forEach((card) => {
 
         const cardComponent = cardComp(card.headline, card.authorPhoto, card.authorName)
 

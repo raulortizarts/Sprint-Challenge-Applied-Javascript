@@ -57,11 +57,24 @@ function authorNameComp (author) {
 
 //author div, needs class, append img container and author span
 
+function AuthorComp (authorImg, author) {
+    const authorDiv = document.createElement('div')
+    authorDiv.classList.add('author')
 
+    authorDiv.appendChild(imgCont(authorImg))
+    authorDiv.appendChild(authorComp(author))
+}
 
 //main comp, card div, needs class, append headline and author div
 
+function cardComp () {
+    const card= document.createElement('div')
+    card.classList.add('card')
 
+    card.appendChild(headlineComp(headline))
+    card.appendChild(authorComp(authorPhoto, authorName))
+    
+}
 //define the html containet to append it all to
 
 

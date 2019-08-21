@@ -17,3 +17,82 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+//headline div needs class and text
+function headlineComp(headline) {
+    const headlineDiv = document.createElement('div')
+    headlineDiv.textContent = headline
+
+    return headlineDiv
+}
+
+//img needs to pull source
+
+function imgComp (authorImg) {
+    const cardImg = document.createElement('img')
+    cardImg.src = authorImg
+
+    return cardImg
+}
+
+//img container, needs class, append img
+
+function imgCont (authorImg) {
+    const imgDiv = document.createElement('div')
+    imgDiv.classList.add('img-container')
+
+    imgDiv.appendChild(imgComp(authorImg))
+
+    return imgDiv
+}
+
+//author span, pulls author name
+
+function authorNameComp (author) {
+    const authorName = document.createElement('span')
+    authorName.textContent =author
+
+    return authorName
+}
+
+//author div, needs class, append img container and author span
+
+function authorComp (authorImg, author) {
+    const authorDiv = document.createElement('div')
+    authorDiv.classList.add('author')
+
+    authorDiv.appendChild(imgCont(authorImg))
+    authorDiv.appendChild(authorNameComp(author))
+
+    return authorDiv
+}
+
+//main comp, card div, needs class, append headline and author div
+
+function cardComp (headline, authorPhoto, authorName) {
+    const card= document.createElement('div')
+    card.classList.add('card')
+
+    card.appendChild(headlineComp(headline))
+    card.appendChild(authorComp(authorPhoto, authorName))
+    
+    return card
+}
+//define the html containet to append it all to
+
+const cardsContainer = document.querySelector('.cards-container')
+
+//pull data from the link using axios and feed to comps as args
+
+axios.get ( 'https://lambda-times-backend.herokuapp.com/articles')
+
+.then ((response) => {
+
+    //console.log(response.data.articles.javascript)
+    response.data.articles.javascript.forEach((card) => {
+
+        const cardComponent = cardComp(card.headline, card.authorPhoto, card.authorName)
+
+        cardsContainer.appendChild(cardComponent)
+    })
+})
